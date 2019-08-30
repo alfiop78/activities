@@ -1,0 +1,146 @@
+.md-card{display: grid; grid-template-rows: auto auto auto; grid-template-columns: 100%;
+  grid-template-areas : "header" "body" "footer";
+  padding: 16px 16px 0px; position: relative;box-sizing: border-box; background: white; width: 90%;
+  border-radius: 5px; margin: auto;
+  transition: width 400ms, opacity 150ms, background 300ms;
+  transition-delay: 400ms; transition-timing-function: cubic-bezier(0.465,0.183,0.153,0.946);
+  max-height: 180em; margin-top: 1em; margin-bottom: 2.5em;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+
+.md-card .headerCard{display: grid; grid-area: header; grid-template-columns: auto auto;}
+
+.md-card .headerCard > .right{justify-self: end;align-self: center;}
+
+.md-card .bodyCard {grid-area: body;margin: 8px auto;}
+
+.md-card > .content.spacer{grid-area: body;display: grid;
+    grid-template-columns: 10% auto 10%;
+    grid-template-rows: auto;}
+.md-card > .content.spacer > .bodyCard{grid-area: auto;}
+.md-card > .content.spacer > div.navigate{display: flex;align-items: center;justify-content: center;}
+.md-card.dense .item{padding: 0px;font-weight: 300;}
+
+.md-card .footerCard{display: grid; grid-area: footer; grid-template-columns: auto auto;}
+.md-card .footerCard.label{justify-content: space-between;padding: 2em 1em;font-size: 15px;font-weight: bold;}
+
+
+.md-card h4{margin: 0em;transition: margin 100ms, font-size 100ms; transition-delay: 400ms; color: #333; font-weight: 400;user-select: none;padding: 0;}
+.md-card.info .headerCard.icon h4{color: white;}
+.md-card .minimize h4{font-size: 1.15rem;font-weight: normal;}
+.md-card h6{font-weight: 300;margin: 4px 0 0 0;transition: margin 100ms, font-size 100ms; transition-delay: 400ms;}
+.md-card.info .headerCard.icon h6{color: whitesmoke;}
+.md-card .minimize h6{transition: opacity 50ms; opacity: 0;}
+
+.md-card > .contextMenu{background: #ececec;right: 10%;position: absolute; width: 40%;display: flex;flex-direction: column;
+  top: 4em; z-index: 2; transition: transform .15s ease-in; transform-origin: top; transform: scale(0,0);
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 4px 3px -2px rgba(0, 0, 0, 0.2), 0 5px 12px 0 rgba(0, 0, 0, 0.12);}
+
+.md-card > .contextMenu > button{padding: 1em;background-color: transparent; text-align: left;border: none;color: unset; width: 100%;letter-spacing: .065em;}
+.md-card > .contextMenu > button:hover{background: gainsboro;cursor: pointer;}
+.md-card > .contextMenu > button[disabled]{padding: 1em;background-color: transparent; text-align: left;border: none;color: dimgray; width: 100%;}
+
+.md-card > .contextMenu.show{transform: scale(1,1); transform-origin: top;}
+
+.md-card.info{background: #43a24ec9;}
+.md-card.info .headerCard.icon, .md-card.alert .headerCard.icon{display: grid; grid-area: header; grid-template-columns: auto 1fr;}
+.md-card.info .headerCard.icon i, .md-card.alert .headerCard.icon i{padding: 0em 12px 0em 0px;}
+.md-card.alert h4 {color: var(--main-secondary-color);}
+
+.md-card.alert{grid-template-rows: 0 48px auto auto; grid-template-areas: "icon" "header" "body" "footer";margin-top: 2em;}
+.md-card.alert > .icon{display: flex; justify-content: center;}
+.md-card.alert > .icon i{position: absolute; font-size: 18px;top: -16px;background: var(--main-secondary-color);color: white;
+    border-radius: 50%;padding: 8px;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0,0,0,.12);}
+
+.md-card.alert b{color: var(--main-secondary-color);}
+
+
+.md-card .notes{line-height: 1.2rem;font-size: .85rem; font-weight: 300; color: dimgray;}
+.md-card .notes .center{display: flex; justify-content: center;}
+.notes > span > span{font-weight: normal;}
+
+.md-card[hidden] {display: none;}
+
+.md-card.minimize .content, .md-card.minimize > .footer{
+  transition: opacity 100ms, max-height 450ms; transition-timing-function: cubic-bezier(0.465,0.183,0.153,0.946);
+  max-height: 0em; opacity: 0; padding: 0px;
+}
+
+.md-card > .content, .md-card > .footer{transition: max-height 450ms 400ms, opacity 100ms 650ms;
+  transition-timing-function: cubic-bezier(0.465,0.183,0.153,0.946);opacity: 1; max-height: 30em;}
+/* .md-card > .footer{transition: max-height 80ms 200ms, opacity 100ms 250ms;transition-timing-function: ease-in-out;
+  max-height: 5em;} */
+/* nelle card minimize nascondo il content e i button in modo da lasciare solo la header visibile */
+
+.md-card.minimize{width: 65%;background: gainsboro;transition: background 350ms, width 400ms 60ms; overflow: hidden;
+  transition-timing-function: cubic-bezier(0.465,0.183,0.153,0.946);}
+.md-card.minimize h4{font-size: .9rem;}
+.md-card.minimize h6{font-size: .75rem;margin-top: .5em;}
+
+/* contenuto di md-card */
+.md-card .bodyCard .grid-row, dialog > .body .grid-row{display: grid; grid-template-rows: auto;grid-row-gap: 16px;}
+  /*grid-horizontal con 3 elementi (icona-test-value) */
+.grid-row .item.grid-h-3:not(.field){display: grid;grid-template-columns: 36px auto auto;grid-column-gap: 8px;align-items: center;}
+.grid-row .item.grid-h-3 > .label{display: flex;align-items: center;}
+.grid-row .item.grid-h-3 > .label > i{color: grey;}
+.grid-row .item.field.grid-h-3{display: grid;grid-template-columns: 36px auto auto; grid-gap: 8px;align-items: center;}
+.grid-row .item.grid-h-2{display: grid;grid-template-columns: auto auto; grid-template-rows: auto;grid-gap: 8px;align-items: center;justify-content: space-between;}
+.grid-row .item.grid-h-2.datalist-icon{grid-template-columns: 88% 10%;grid-gap: 2%;}
+
+/* nella grid inizio dalla posizione 2 */
+.md-card .item .cell-col-start-2{grid-column-start: 2;}
+
+.md-card .grid-button-h-5{display: grid; grid-area: footer;padding: 8px 0; justify-content: space-between;
+  grid-template-columns: auto auto auto auto auto; grid-gap: 16px;}
+.md-card .item .value{justify-self: end;font-weight: 300;display: inline-flex;}
+
+.md-card > .footer.buttons, dialog .footer.buttons{display: grid;grid-area: footer; grid-template-columns: auto auto; grid-column-gap: 8px;
+  margin: 16px 0 8px;justify-content: space-between;}
+
+/* un solo tasto nel footer lo visualizzo a destra*/
+.md-card > .footer.buttons.one{grid-template-columns: auto;justify-content: flex-end;}
+
+.md-card .bodyCard p:not(.helper){font-size: .75rem; font-weight: 300;}
+
+:not(.selectList) ul{list-style: circle;padding-inline-start: 40px;}
+:not(.selectList) ul > li{min-width: fit-content;display: list-item;}
+
+
+
+/*horizontal LANDSCAPE */
+@media only screen and (min-device-width: 361px) and (max-device-width: 768px) {
+  .md-card{font-size: .9rem;}
+  .md-card h4 {font-size: 1.1rem;}
+  .md-card h6 {font-size: .9rem;}
+  .md-card > .contextMenu > button{font-size: .85rem;}
+  .iconContainer{position: relative;}
+  .iconContainer > label{display: none;}
+  .md-card > .content.spacer > div.navigate{visibility: hidden;}
+}
+
+@media screen and (max-device-width: 360px) {
+  .md-card{padding: 12px 12px 0;font-size: .8rem;}
+  .md-card h4 {font-size: .95rem;}
+  .md-card h6 {font-size: .8rem;}
+  .md-card > .contextMenu > button{font-size: .8rem;}
+  .md-card .bodyCard .grid-row, dialog > .body .grid-row{grid-row-gap: 4px;}
+  .md-card > .footer.buttons, dialog .footer.buttons{margin: 12px 0 4px;}
+  .md-card .notes{line-height: 1.1rem;font-size: .75rem;}
+  .grid-row .item.grid-h-3:not(.field){grid-template-rows: 32px;grid-gap: 4px;}
+  .iconContainer{position: relative;}
+  .iconContainer > label{display: none;}
+  .md-card > .content.spacer > div.navigate{visibility: hidden;}
+}
+
+@media screen and (min-device-width: 769px) {
+  .md-card h4{font-size: 1.3rem;}
+  .md-card h6{font-size: 1rem;}
+  .md-card .bodyCard .grid-row, dialog > .body .grid-row{display: grid; grid-template-rows: auto;grid-row-gap: 16px;justify-content: center;grid-template-columns: 75%;}
+  .md-card .bodyCard .grid-row[form]{grid-template-columns: 60%;}
+  .md-card > .content.spacer .bodyCard .grid-row[form]{grid-template-columns: 100%;}
+  .grid-row .item.grid-h-3:not(.field){grid-template-rows: 36px;grid-gap: 8px;}
+  .md-card .iconContainer{display: flex;flex-direction: column;align-items: center;position: relative;}
+  .iconContainer > label{font-size: .7rem;}
+  .md-card > .contextMenu{right: 5%;width: 20%;}
+}
